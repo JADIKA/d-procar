@@ -86,3 +86,17 @@
 #### FIX
 - 'Journal entry already posted' issue fixed.
 
+#### 02.08.2021
+#### Version 14.0.3.13.11
+#### UPDT
+- Account Parent Group added
+
+#### 13.08.2021
+#### Version 14.0.3.13.12
+#### UPDT
+- Dashboard issue fixed, 'state' field is ambigous
+
+#### 18.08.2021
+#### Version 14.0.3.13.13
+#### UPDT
+- Reconciliation issue fixed
