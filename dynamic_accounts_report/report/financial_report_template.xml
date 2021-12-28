@@ -2,23 +2,23 @@
 <odoo>
     <template id="dynamic_accounts_report.balance_sheet">
         <t t-call="web.html_container">
-            <t t-call="web.external_layout">
+            <t t-call="web.internal_layout">
                 <t t-set="data_report_margin_top" t-value="12"/>
                 <t t-set="data_report_header_spacing" t-value="9"/>
                 <t t-set="data_report_dpi" t-value="110"/>
                 <div class="page">
-                    <h3>
-                        <span t-esc="report_name"/>
+                    <h3><span t-esc="Filters.get('company_name')"/>: <span t-esc="report_name"/>
                     </h3>
+
                     <div>
                         <span t-if="Filters.get('date_from')">
-                            <strong> From:</strong>
-                            <t t-esc="Filters['date_from']"/>
+                        <strong> From:</strong>
+                        <t t-esc="Filters['date_from']"/>
                         </span>
 
                         <span t-if="Filters.get('date_to')">
-                            <strong>To:</strong>
-                            <t t-esc="Filters['date_to']"/>
+                        <strong>To:</strong>
+                        <t t-esc="Filters['date_to']"/>
                         </span>
 
                         <div style="width:100%;">
@@ -74,7 +74,7 @@
                                             <t t-esc="Filters['target_move']"/>
                                         </li>
                                 </div>
-                            </div>      
+                            </div>
                         </div>
                     </div>
                     <br></br>
@@ -147,6 +147,8 @@
                             </tr>
                         </tbody>
                     </table>
+
+
                 </div>
             </t>
         </t>

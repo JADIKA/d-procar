@@ -100,7 +100,7 @@ class BalanceSheetView(models.TransientModel):
                                      'date_to': filters['date_to'],
                                      'strict_range': False,
                                      'company_id': self.company_id,
-                                     'lang': self.env.user.lang}}
+                                     'lang': 'en_US'}}
 
         account_lines = self.get_account_lines(new_data)
         report_lines = self.view_report_pdf(account_lines, new_data)[
