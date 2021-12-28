@@ -1,0 +1,29 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* procar_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-25 20:49+0000\n"
+"PO-Revision-Date: 2020-05-25 20:49+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: procar_sale
+#: code:addons/procar_sale/models/sale.py:0
+#: model:ir.model.fields,field_description:procar_sale.field_sale_order__abaconet_id
+#: model_terms:ir.ui.view,arch_db:procar_sale.custom_sale_order_view
+#, python-format
+msgid "Abaconet ID"
+msgstr "Referencia Abaconet"
+
+#. module: procar_sale
+#: model:ir.model,name:procar_sale.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"

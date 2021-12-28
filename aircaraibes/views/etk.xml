@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="aircaraibes_all_etk_search_view" model="ir.ui.view">
+            <field name="name">aircaraibes.all.etk.search.view</field>
+            <field name="model">all.etk</field>
+            <field name="arch" type="xml">
+                <search string="ETKS">
+                    <field name="customer" string="Customer"
+                           filter_domain="['|', ('customer', 'ilike', self)]"/>
+                    <field name="name" string="Product" filter_domain="[('name', 'ilike', self)]"/>
+                    <separator/>
+                    <separator name="products"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Customer" domain="[]" context="{'group_by':'customer'}"/>
+                        <filter string="Product" domain="[]" context="{'group_by':'name'}"/>
+                        <filter string="Date" domain="[]" context="{'group_by': 'date_order'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="aircaraibes_sale_order_line_tree_view" model="ir.ui.view">
+            <field name="name">aircaraibes.sale.order.line.tree.view</field>
+            <field name="model">all.etk</field>
+            <field eval="7" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Products" create="false" delete="false" colors="green:original == False">
+                    <field name="sale_order_line_id" invisible="1"/>
+                    <field name="date_order"/>
+                    <field name="etk"/>
+                    <field name="pnr"/>
+                    <field name="abaconet_id"/>
+                    <field name="name" string="Product"/>
+                    <field name="original" invisible="1"/>
+                    <field name="price_total" widget="monetary"/>
+                    <field name="price_cost_total" widget="monetary"/>
+                    <field name="total_taxes" widget="monetary"/>
+                    <field name="taxes_tx" widget="monetary"/>
+                    <field name="fare_basic" widget="monetary" />
+                    <field name="services_fees" widget="monetary"/>
+                    <button name="go_to_order" type="object" string="Go to Order"
+                            attrs="{'invisible': [('original','=',False)]}" icon="gtk-zoom-in"/>
+                </tree>
+            </field>
+        </record>
+        <record id="aircaraibes_sale_order_line_action" model="ir.actions.act_window">
+            <field name="name">All</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">all.etk</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="aircaraibes_sale_order_line_tree_view"/>
+            <field name="search_view_id" ref="aircaraibes_all_etk_search_view"/>
+        </record>
+
+        <menuitem id="aircaraibes_etk_menu" name="ETKS" parent="sales_team.menu_base_partner" sequence="2"/>
+
+        <menuitem id="aircaraibes_sale_order_line_menu" action="aircaraibes_sale_order_line_action"
+                  parent="aircaraibes_etk_menu" sequence="1"/>
+
+    </data>
+</odoo>

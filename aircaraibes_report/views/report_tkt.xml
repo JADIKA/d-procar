@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_tkt">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="d">
+            <t t-call="aircaraibes_report.custom_layout">
+                <div class="page">
+                    <div class="row mt32 mb32">
+                        <div name="date_from" t-if="docs.date_from" class="col-xs-3">
+                            <strong>Date from:</strong>
+                            <p t-field="docs.date_from"/>
+                        </div>
+                        <div name="date_to" t-if="docs.date_to" class="col-xs-3">
+                            <strong>Date to:</strong>
+                            <p t-field="docs.date_to"/>
+                        </div>
+                    </div>
+                    <t t-set="total_fare_basic" t-value="0"/>
+                    <t t-set="total_taxes_tx" t-value="0"/>
+                    <t t-set="total_price_unit" t-value="0"/>
+                    <t t-set="total_commission" t-value="0"/>
+                    <t t-set="total_price_cost" t-value="0"/>
+                    <t t-set="total_services_fees" t-value="0"/>
+                    <t t-set="total_cash" t-value="0"/>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>TICKET NUMBER</th>
+                                <th class="text-right">HT CUC/EUR</th>
+                                <th class="text-right">XT TAXES CUC/EUR</th>
+                                <th class="text-right">TICKET TOTAL CUC/EUR</th>
+                                <th class="text-right">COMMISSION</th>
+                                <th class="text-right">NET DUE TX</th>
+                                <th class="text-right">FRAIS DE DOSSIER</th>
+                                <th class="text-right">MODE DE PAYEMENT</th>
+                                <th class="text-right">SERVICE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="orders" t-as="o">
+                                <tr t-foreach="o.order_line" t-as="l">
+                                    <td class="text-right" style="white-space: text-nowrap;">
+                                        <span t-esc="l.etk" />
+                                    </td>
+                                    <td class="text-right" style="white-space: text-nowrap;">
+                                        <span t-esc="l.fare_basic" />
+                                    </td>
+                                    <td class="text-right" style="white-space: text-nowrap;">
+                                        <span t-esc="l.taxes_tx" />
+                                    </td>
+                                    <td class="text-right" style="white-space: text-nowrap;">
+                                        <span t-esc="l.price_unit" />
+                                    </td>
+                                    <td class="text-right" style="white-space: text-nowrap;">
+                                        <span t-esc="l.commission" />
+                                    </td>
+                                    <td class="text-right" style="white-space: text-nowrap;">
+                                        <span t-esc="l.price_cost_total" />
+                                    </td>
+                                    <td class="text-right" style="white-space: text-nowrap;">
+                                        <span t-esc="l.services_fees" />
+                                    </td>
+                                    <td class="text-right" style="white-space: text-nowrap;">
+                                        <span t-esc="o.form_of_payment" />
+                                    </td>
+                                    <td class="text-right" style="white-space: text-nowrap;">
+                                        <span t-esc="l.product_id.name" />
+                                    </td>
+                                    <t t-set="total_fare_basic" t-value="total_fare_basic + l.fare_basic"/>
+                                    <t t-set="total_taxes_tx" t-value="total_taxes_tx + l.taxes_tx"/>
+                                    <t t-set="total_price_unit" t-value="total_price_unit + l.price_unit"/>
+                                    <t t-set="total_commission" t-value="total_commission + l.commission"/>
+                                    <t t-set="total_price_cost" t-value="total_price_cost + l.price_cost_total"/>
+                                    <t t-set="total_services_fees" t-value="total_services_fees + l.services_fees"/>
+                                    <span t-if="o.form_of_payment=='ca'">
+                                        <t t-set="total_cash" t-value="total_cash + l.price_unit"/>
+                                    </span>
+                                </tr>
+                            </t>
+                            <tr>
+                                <td class="text-right" style="white-space: text-nowrap;">
+                                    <strong>TOTALS</strong>
+                                </td>
+                                <td class="text-right" style="white-space: text-nowrap;">
+                                    <strong><span t-esc="total_fare_basic"></span></strong>
+                                </td>
+                                <td class="text-right" style="white-space: text-nowrap;">
+                                    <strong><span t-esc="total_taxes_tx"></span></strong>
+                                </td>
+                                <td class="text-right" style="white-space: text-nowrap;">
+                                    <strong><span t-esc="total_price_unit"></span></strong>
+                                </td>
+                                <td class="text-right" style="white-space: text-nowrap;">
+                                    <strong><span t-esc="total_commission"></span></strong>
+                                </td>
+                                <td class="text-right" style="white-space: text-nowrap;">
+                                    <strong><span t-esc="total_price_cost"></span></strong>
+                                </td>
+                                <td class="text-right" style="white-space: text-nowrap;">
+                                    <strong><span t-esc="total_services_fees"></span></strong>
+                                </td>
+                                <td class="text-right" style="white-space: text-nowrap;">
+                                    
+                                </td>
+                                 <td class="text-right" style="white-space: text-nowrap;">
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row mt32 mb32">
+                        <div name="total_cash" class="col-xs-3">
+                            <strong>Total cash:</strong>
+                            <t t-esc="total_cash"/>
+                        </div>
+                        <div name="date_to" class="col-xs-3">
+                            <strong>Net TX</strong>
+                            <t t-esc="total_cash - total_commission - total_services_fees"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+</odoo>

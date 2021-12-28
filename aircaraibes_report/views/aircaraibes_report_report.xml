@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report 
+            id="action_report_tkt"
+            model="report.aircaraibes_report.report_tkt"
+            string="Tkt report"
+            report_type="qweb-pdf"
+            name="aircaraibes_report.report_tkt"
+            file="aircaraibes_report.report_tkt"
+            />
+        <record id="format_report_tkt" model="report.paperformat">
+            <field name="name">Format Roport Tkt</field>
+            <field name="orientation">Landscape</field>
+        </record>
+        <record id="aircaraibes_report.action_report_tkt" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="aircaraibes_report.format_report_tkt"/>
+        </record>
+    </data>
+</odoo>
