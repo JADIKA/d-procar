@@ -259,7 +259,7 @@
 "account_common_4160000","Cobros por Cuenta de Terceros","416.0000","account.data_account_type_payable","l10n_cu_chart_template_common",1,"Pasivos Circulantes"
 "account_common_4170000","Dividendos y Participaciones por Pagar","417.0000","account.data_account_type_payable","l10n_cu_chart_template_common",1,"Pasivos Circulantes"
 "account_common_4180000","Cuentas en Participación","418.0000","account.data_account_type_payable","l10n_cu_chart_template_common",1,"Pasivos Circulantes"
-"account_common_4210000","Cuentas por Pagar - Activos Fijos Tangibles","421.0000","account.data_account_type_payable","l10n_cu_chart_template_common",0,"Pasivos Circulantes"
+"account_common_4210000","Cuentas por Pagar - Activos Fijos Tangibles","421.0000","account.data_account_type_payable","l10n_cu_chart_template_common",1,"Pasivos Circulantes"
 "account_common_4210010","Dentro del Órgano u Organismo","421.0010","account.data_account_type_payable","l10n_cu_chart_template_common",1,"Pasivos Circulantes"
 "account_common_4210020","Fuera del Órgano u Organismo","421.0020","account.data_account_type_payable","l10n_cu_chart_template_common",1,"Pasivos Circulantes"
 "account_common_4210030","En el Extranjero","421.0030","account.data_account_type_payable","l10n_cu_chart_template_common",1,"Pasivos Circulantes"
