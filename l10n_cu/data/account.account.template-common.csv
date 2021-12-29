@@ -1,5 +1,5 @@
 "id","name","code","user_type_id/id","chart_template_id/id","reconcile","note"
-"account_common_1200000","Inversiones a corto plazo o temporales","120.0000","account.data_account_type_current_assets","l10n_cu_chart_template_common",,"0","Activo Circulante"
+"account_common_1200000","Inversiones a corto plazo o temporales","120.0000","account.data_account_type_current_assets","l10n_cu_chart_template_common","0","Activo Circulante"
 "account_common_1300000","Efectos por cobrar a corto plazo","130.0000","account.data_account_type_receivable","l10n_cu_chart_template_common","1","Activo Circulante"
 "account_common_1300001","Efectos por cobrar a corto plazo. Dentro del Órgano u Organismo","130.0001","account.data_account_type_receivable","l10n_cu_chart_template_common","1","Activo Circulante"
 "account_common_1300002","Efectos por cobrar a corto plazo. Fuera del Órgano u Organismo","130.0002","account.data_account_type_receivable","l10n_cu_chart_template_common","1","Activo Circulante"
